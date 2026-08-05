@@ -101,6 +101,17 @@ function crearTablaContactosCorrectamente(obj)
                     let celda = document.createElement('td');
                     celda.textContent = obj[i][j];
                     fila.appendChild(celda);
+
+                    //si es el quinto elemento
+                    if(j == 4)
+                    {
+                        //creamos la imagen
+                        celda.textContent = '';
+                        let imagen = document.createElement('img');
+                        imagen.classList.add('img-fluid', 'rounded');
+                        imagen.src = obj[i][j];
+                        celda.appendChild(imagen);
+                    }
                 }
                 //agregar los botones a la fila
                 fila.appendChild(crearCeldaBotones(i+1,obj[i]));
@@ -205,7 +216,7 @@ function abrirModalModificarContacto(numFila,datosContacto)
 function modificarContacto(numFila)
 {
     //abrir modal
-    bootstrap.Toast.getOrCreateInstance(document.getElementById('crearContactoModal')).hide();
+    bootstrap.Modal.getOrCreateInstance(document.getElementById('crearContactoModal')).hide();
 
     //obtener nuevos DATOS a partir del formulario
     let nombre = document.getElementById('nombre').value;
